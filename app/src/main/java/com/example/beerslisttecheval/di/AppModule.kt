@@ -19,11 +19,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class AppModule {
 
+    //Getting a GSON object
     @Provides
     fun provideGson(): Gson {
         return Gson()
     }
 
+    //Creating the OKHttpClient for interception
     @Provides
     fun provideOkHttp(): OkHttpClient {
         return OkHttpClient.Builder()
@@ -35,6 +37,7 @@ class AppModule {
             .build()
     }
 
+    //Creating the Retrofit client
     @Provides
     @Singleton
     fun provideRetrofit(
@@ -48,6 +51,7 @@ class AppModule {
             .build()
     }
 
+    //Using Retrofit to get the API call
     @Provides
     fun provideApi(
         retrofit: Retrofit
@@ -55,6 +59,7 @@ class AppModule {
         return retrofit.create(ApiRequest::class.java)
     }
 
+    //Merging the repository class together
     @Provides
     fun provideRepository(
         apiRequest: ApiRequest

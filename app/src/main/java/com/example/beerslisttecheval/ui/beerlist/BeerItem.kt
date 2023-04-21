@@ -18,9 +18,9 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.example.beerslisttecheval.data.model.beer.BeerItemModel
 
+// Display the details of a single beer
 @Composable
 fun BeerItem(beer: BeerItemModel) {
-    // Display the details of a single beer
     Card(
         elevation = 10.dp,
         shape = RoundedCornerShape(10.dp),

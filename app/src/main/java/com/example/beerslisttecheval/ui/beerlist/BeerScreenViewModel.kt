@@ -15,9 +15,11 @@ class BeerScreenViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
 
+    //Mutable State Flow to store the data
     private val _beers = MutableStateFlow<List<BeerItemModel>>(emptyList())
     val beers: StateFlow<List<BeerItemModel>> = _beers
 
+    //Initialising the API call request to fetch the data
     init {
         getBeers()
     }

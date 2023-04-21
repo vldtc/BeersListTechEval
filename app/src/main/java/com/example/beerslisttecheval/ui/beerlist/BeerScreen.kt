@@ -20,6 +20,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
 import com.example.beerslisttecheval.data.model.beer.BeerItemModel
 
+// Main screen of the app
 @Composable
 fun BeerScreen(
     mainScreenViewModel: BeerScreenViewModel = viewModel()

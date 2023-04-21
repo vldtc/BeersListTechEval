@@ -2,6 +2,8 @@ package com.example.beerslisttecheval.data.remote
 
 object ApiDetails {
 
+    //Base url of the API
     const val BASE_URL = "https://api.punkapi.com/"
+    //End point of the API
     const val BEER = "v2/beers"
 }
