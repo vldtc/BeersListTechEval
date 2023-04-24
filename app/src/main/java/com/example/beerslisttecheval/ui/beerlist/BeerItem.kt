@@ -2,6 +2,7 @@ package com.example.beerslisttecheval.ui.beerlist
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -20,13 +21,17 @@ import com.example.beerslisttecheval.data.model.beer.BeerItemModel
 
 // Display the details of a single beer
 @Composable
-fun BeerItem(beer: BeerItemModel) {
+fun BeerItem(
+    beer: BeerItemModel,
+    onClick: (String) -> Unit
+) {
     Card(
         elevation = 10.dp,
         shape = RoundedCornerShape(10.dp),
         modifier = Modifier
             .padding(horizontal = 16.dp, vertical = 8.dp)
             .fillMaxHeight()
+            .clickable { onClick(beer.id.toString()) }
     ) {
         Row(
             modifier = Modifier

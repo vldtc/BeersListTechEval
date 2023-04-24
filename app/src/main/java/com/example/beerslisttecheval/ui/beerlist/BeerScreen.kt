@@ -21,19 +21,33 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.beerslisttecheval.data.model.beer.BeerItemModel
+import com.example.beerslisttecheval.navigation.Screen
 
 // Main screen of the app
 @Composable
 fun BeerScreen(
-    navController: NavController
+    navController: NavController,
 ) {
     val viewModel = hiltViewModel<BeerScreenViewModel>()
     val beers by viewModel.beers.collectAsState()
 
+    val navigateToDetails: (String) -> Unit = { beerId ->
+        navController.navigate("${Screen.Details.route}/$beerId")
+
+    }
+
     // Display the list of beers in a LazyColumn
+    BeerContent(beersList = beers, navigateToDetails)
+}
+
+@Composable
+fun BeerContent(
+    beersList: List<BeerItemModel>,
+    onClick: (String) -> Unit
+){
     LazyColumn {
-        items(beers) { beer ->
-            BeerItem(beer)
+        items(beersList) { beer ->
+            BeerItem(beer, onClick)
         }
     }
 }

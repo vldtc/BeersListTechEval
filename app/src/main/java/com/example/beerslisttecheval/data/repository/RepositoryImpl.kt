@@ -10,5 +10,6 @@ class RepositoryImpl @Inject constructor(
 ) : Repository {
 
     override suspend fun getBeers(): List<BeerItemModel> = apiRequest.getBeers()
+    override suspend fun getBeerItem(id: Int): List<BeerItemModel> = apiRequest.getBeerItem(id)
 
 }
