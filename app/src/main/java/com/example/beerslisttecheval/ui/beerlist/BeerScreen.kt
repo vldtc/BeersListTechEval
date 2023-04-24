@@ -16,16 +16,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.beerslisttecheval.data.model.beer.BeerItemModel
 
 // Main screen of the app
 @Composable
 fun BeerScreen(
-    mainScreenViewModel: BeerScreenViewModel = viewModel()
+    navController: NavController
 ) {
-    val beers by mainScreenViewModel.beers.collectAsState()
+    val viewModel = hiltViewModel<BeerScreenViewModel>()
+    val beers by viewModel.beers.collectAsState()
 
     // Display the list of beers in a LazyColumn
     LazyColumn {

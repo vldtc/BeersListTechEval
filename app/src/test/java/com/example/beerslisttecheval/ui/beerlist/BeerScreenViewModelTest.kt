@@ -1,5 +1,6 @@
 package com.example.beerslisttecheval.ui.beerlist
 
+import com.example.beerslisttecheval.data.repository.Repository
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -10,7 +11,11 @@ import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-
+import org.junit.Rule
+import org.mockito.Mock
+import org.mockito.Mockito
+import org.mockito.Mockito.mock
+import org.mockito.MockitoAnnotations
 @ExperimentalCoroutinesApi
 class BeerScreenViewModelTest {
 

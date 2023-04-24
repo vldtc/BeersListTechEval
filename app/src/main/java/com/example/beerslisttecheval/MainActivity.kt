@@ -1,5 +1,6 @@
 package com.example.beerslisttecheval
 
+import AppNavigation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                   BeerScreen()
+                   AppNavigation()
                 }
             }
         }
