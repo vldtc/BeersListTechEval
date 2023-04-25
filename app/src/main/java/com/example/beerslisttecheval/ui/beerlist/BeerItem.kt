@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.example.beerslisttecheval.data.model.beer.BeerItemModel
+import com.example.beerslisttecheval.navigation.Screen
 
 // Display the details of a single beer
 @Composable
@@ -31,7 +32,10 @@ fun BeerItem(
         modifier = Modifier
             .padding(horizontal = 16.dp, vertical = 8.dp)
             .fillMaxHeight()
-            .clickable { onClick(beer.id.toString()) }
+            .clickable {
+                onClick(beer.id.toString())
+                Screen.Details.header = beer.name.toString()
+            }
     ) {
         Row(
             modifier = Modifier

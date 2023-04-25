@@ -28,7 +28,8 @@ fun AppNavigation(){
             navController = navController,
             startDestination = Screen.BeerList.route
             ) {
-            composable(Screen.BeerList.route) {
+            composable(Screen.BeerList.route)
+            {
                 targetScreen.value = Screen.BeerList
                 BeerScreen(navController = navController)
             }
