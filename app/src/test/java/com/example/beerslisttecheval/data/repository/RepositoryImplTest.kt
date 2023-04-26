@@ -46,4 +46,31 @@ class RepositoryImplTest {
         // Then
         assertThat(actualBeers).isEmpty()
     }
+    @Test
+    fun testGetBeerItem() = runBlocking {
+        // Given
+        val expectedBeerItem = listOf(
+            BeerItemModel(id =1, name = "Beer 1")
+        )
+        fakeApiRequest.setMockedResponse(expectedBeerItem)
+
+        // When
+        val actualBeers = repository.getBeerItem(1)
+
+        // Then
+        assertThat(actualBeers).isEqualTo(expectedBeerItem)
+    }
+
+    @Test
+    fun testGetBeerItem_emptyResponse() = runBlocking {
+        // Given
+        val expectedBeers = emptyList<BeerItemModel>()
+        fakeApiRequest.setMockedResponse(expectedBeers)
+
+        // When
+        val actualBeers = repository.getBeerItem(1)
+
+        // Then
+        assertThat(actualBeers).isEmpty()
+    }
 }

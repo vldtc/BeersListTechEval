@@ -41,7 +41,7 @@ fun BeerDetailsContent(
             elevation = 10.dp,
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier
-                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .padding(horizontal = 16.dp, vertical = 8.dp),
         ) {
             Column() {
                 Row(

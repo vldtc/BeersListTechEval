@@ -15,8 +15,16 @@ class FakeApiRequest : ApiRequest {
 
     override suspend fun getBeers(): List<BeerItemModel> {
         return if (mockedError) {
-            throw Exception("Error fetching beers")
+            throw Exception("Error fetching beer list")
         } else {
+            mockedResponse ?: emptyList()
+        }
+    }
+
+    override suspend fun getBeerItem(id: Int): List<BeerItemModel> {
+        return if(mockedError){
+            throw Exception("Error fetching beer item!")
+        }else{
             mockedResponse ?: emptyList()
         }
     }

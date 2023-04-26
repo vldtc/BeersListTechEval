@@ -6,13 +6,14 @@ import com.example.beerslisttecheval.data.repository.Repository
 class FakeRepository : Repository {
 
     private val beers = mutableListOf<BeerItemModel>()
+    private val beerItem = mutableListOf<BeerItemModel>()
 
     override suspend fun getBeers(): List<BeerItemModel> {
         return beers.toList()
     }
 
-    fun addBeers(newBeers: List<BeerItemModel>) {
-        beers.addAll(newBeers)
+    override suspend fun getBeerItem(id: Int): List<BeerItemModel> {
+        return beerItem.toList()
     }
 
     fun clearBeers() {

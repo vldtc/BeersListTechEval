@@ -1,6 +1,6 @@
 package com.example.beerslisttecheval.ui.beerlist
 
-import com.example.beerslisttecheval.data.repository.Repository
+import com.example.beerslisttecheval.ui.beerdetails.BeerDetailsViewModel
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -11,24 +11,22 @@ import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import org.junit.Rule
-import org.mockito.Mock
-import org.mockito.Mockito
-import org.mockito.Mockito.mock
-import org.mockito.MockitoAnnotations
+
 @ExperimentalCoroutinesApi
 class BeerScreenViewModelTest {
 
     private val testDispatcher = StandardTestDispatcher()
     private lateinit var fakeRepository: FakeRepository
-    private lateinit var viewModel: BeerScreenViewModel
+    private lateinit var viewModelBeerScreen: BeerScreenViewModel
+    private lateinit var viewModelBeerItem: BeerDetailsViewModel
 
 
     @Before
     fun setup() {
         Dispatchers.setMain(testDispatcher)
         fakeRepository = FakeRepository()
-        viewModel = BeerScreenViewModel(fakeRepository)
+        viewModelBeerScreen = BeerScreenViewModel(fakeRepository)
+        viewModelBeerItem = BeerDetailsViewModel(fakeRepository)
     }
 
     @After
@@ -42,10 +40,10 @@ class BeerScreenViewModelTest {
         fakeRepository.clearBeers()
 
         // When
-        viewModel.getBeers()
+        viewModelBeerScreen.getBeers()
 
         // Then
-        assertThat(viewModel.beers.value).isEmpty()
+        assertThat(viewModelBeerScreen.beers.value).isEmpty()
     }
 
 }
